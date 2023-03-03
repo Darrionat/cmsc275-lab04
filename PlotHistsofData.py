@@ -142,11 +142,29 @@ def plotMeans(numDicePerTrial, numDiceThrown, numBins, legend,
 
 
 # pylab.figure()
+"""
+# Part 1
 data = getBMData("bm_results2012.txt")
 ages = data['age']
 rand_ages = random.sample(ages, 1000)
 makeHist(rand_ages, 20, "Ages of Randomly Selected Runners", "Age", "Frequency")
 pylab.savefig("runnerAgeHist_1000random.pdf")
 pylab.show()
-# Uncomment and Fill in the correct values for XXX, YYY, and ZZZ
-# mean, var = plotMeans(XXX, YYY, ZZZ, '1 die', 'w', '*')
+"""
+# Part 2
+num_dice_thrown = 1
+num_rolls = 1000
+num_bins = 11
+if num_dice_thrown == 1:
+    mean, var = plotMeans(num_dice_thrown, num_rolls, num_bins, '1 die', 'w', '*')
+    print('Mean', mean)
+    print('stdev', math.sqrt(var))
+if num_dice_thrown > 1:
+    mean, var = plotMeans(num_dice_thrown, num_rolls, num_bins, str(num_dice_thrown) + ' dice', 'w', '*')
+mean, var = plotMeans(50, 1000, 11, '1 die', 'w', '//')
+print('Mean', mean)
+print('stdev', math.sqrt(var))
+print()
+pylab.title('Dice Rolls')
+pylab.savefig("dice_rolls.pdf")
+pylab.show()
